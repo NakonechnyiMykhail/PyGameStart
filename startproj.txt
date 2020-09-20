@@ -1,0 +1,14 @@
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+python -m venv venv
+#windows
+.\venv\Scripts\activate
+# unix/linux/mac
+source venv/bin/activate
+
+
+
+# GIT
+git init
+
+git config --global user.name "Mikhail"
+git config --global user.email "mykhail.nakonechnyi.com"
