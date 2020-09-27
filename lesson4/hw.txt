@@ -1,0 +1,9 @@
+1. install and set up python & VSCode
+2. install and set up git bash
+3. clone repo
+4. initial repo at home laptop/PC
+
+5. realize printWelcome()
+6. create choiceX, choiceO and 
+def choiceRandom():
+    pass
