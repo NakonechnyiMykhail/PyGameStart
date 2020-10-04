@@ -15,9 +15,39 @@ git -> return 1 version
 
 
 Local(working) laptops/PC
-git init                            # create project
-    add 2 files to proj
-git add /lesson3/file1.py /lesson4/file2.py           # "+" at VSCode
-git commit -m "initial project"     # "Message" + Ok
-git push origin master              # 
+Open project folder (PyGameStart)
+    git init                            # create project
+    # configuration
+    #     ____________________________
+    #     we set up config parameters
+    #        git config --global user.name "Mike"
+    #        git config --global user.email "mail@gmail.com"
+    #     ____________________________
+        add 2 files to proj
+    git add /lesson3/file1.py /lesson4/file2.py           # "+" at VSCode
+    git commit -m "initial project"     # "Message" + Ok
+    git push origin master              # 
+                                        # origin = GITHUB repo
+
+At home (install git bash)
+____________________________
+we set up config parameters
+    git config --global user.name "Mike"
+    git config --global user.email "mail@gmail.com"
+____________________________
+open our REPO=PROJECT at GITHUB and copy URL https://github.com/NakonechnyiMykhail/PyGameStart.git
+open folder where will be save a PROJECT
+at terminal go to THIS folder
+    cd ~/Documents      #~/Документы
+    git clone https://github.com/NakonechnyiMykhail/PyGameStart.git
+created folder with name REPO
+go to folder REPO (VSCode -> File -> Open Folder -> open_REPO_folder)
+    cd PyGameStart
+change files
+    git add /lesson3/file1.py /lesson4/file2.py           # "+" at VSCode
+    git commit -m "initial project"     # "Message" + Ok
+    git push origin master              # 
                                     # origin = GITHUB repo
+
+
+
