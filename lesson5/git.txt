@@ -6,3 +6,18 @@ Error change 1 -> Add file to git = 4 version
 Error change N -> Add file to git = (4 + N) version
 
 git -> return 1 version
+
+1v ---                      ---------- N+1
+     |                                ^
+     2v ------                        |
+             |                        |
+            N v ----.... ---- return 1v
+
+
+Local(working) laptops/PC
+git init                            # create project
+    add 2 files to proj
+git add /lesson3/file1.py /lesson4/file2.py           # "+" at VSCode
+git commit -m "initial project"     # "Message" + Ok
+git push origin master              # 
+                                    # origin = GITHUB repo

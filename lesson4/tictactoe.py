@@ -29,7 +29,10 @@ def choiceRandom():
     pass
 
 def choiceX():
-    return ['X', 'O']
+    return ['X', 'O'] # [player, bot]
+
+def choiceO():
+    return ['O', 'X']
 
 def printWelcome():
     menu = """
