@@ -12,6 +12,8 @@
  - - -
 | | | |
 """
+import random 
+
 
 def inputPlayerLetter():
     letter = ''
@@ -26,7 +28,10 @@ def inputPlayerLetter():
 #print(inputPlayerLetter()) # check!
 
 def choiceRandom():
-    pass
+    if random.randint(0, 1) == 0:
+        return ['X', 'O'] # 'Bot'
+    else:
+        return ['O', 'X'] # 'Player'
 
 def choiceX():
     return ['X', 'O'] # [player, bot]
@@ -49,3 +54,15 @@ def printWelcome():
 
     if (choice == 1):
         return choiceX()
+    elif (choice == 2):
+        return choiceO()
+    elif (choice == 3):
+        return choiceRandom()
+    elif (choice == 4):
+        return inputPlayerLetter()
+    else:
+        return -1 # ERROR
+
+choices = printWelcome()
+print('Player goes', choices[0])
+print('Bot goes', choices[1])
