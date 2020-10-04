@@ -1,0 +1,8 @@
+1 project -> Add to git (all files) = 1 version
++ 1 feach (new function in new file) -> add new FILE with function to git = 2 version
+include in our project -> Error -> add PROJECT(CHANGED) FILE to git = 3 version
+Error change 1 -> Add file to git = 4 version
+...
+Error change N -> Add file to git = (4 + N) version
+
+git -> return 1 version
