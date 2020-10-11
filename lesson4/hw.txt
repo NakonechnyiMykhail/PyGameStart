@@ -7,3 +7,8 @@
 6. create choiceX, choiceO and 
 def choiceRandom():
     pass
+
+
+18.10.20 
+1. realize check(ToPlayAgain) with capital character
+2. delete print with question before check(ToPlayAgain)
