@@ -169,22 +169,64 @@ def isWinner(board, letter):
 def makeMove(board, letter, move):
     board[move] = letter
 
+def drawBoard(board):
+    print(board[7] + '|' + board[8] + '|' + board[9])
+    print('-+-+-')
+    print(board[4] + '|' + board[5] + '|' + board[6])
+    print('-+-+-')
+    print(board[1] + '|' + board[2] + '|' + board[3])
+    print('-+-+-')
+    """
+    -+-+-
+     | |
+    -+-+-
+     | | 
+    -+-+-
+     | | 
+    -+-+-
+    """
+
+def isSpaceFree(board, move):
+    # board = [' ', 'x', 'o', ' ', ' ', 'x', 'o', ' ', ' ']
+    # 'x'      == ' ' 
+    # board[1] == ' '
+
+    #print('Cell is not free')
+    return board[move] == ' ' # ' ' == ' ' -> True
+
+def getPlayerMove(board):
+    move = ' '
+    while move not in '1 2 3 4 5 6 7 8 9'.split() or not isSpaceFree(board, int(move)):
+        move = input('What is your next step? (1-9) : ')
+    return int(move)
+
+def getBotMove(board):
+    pass
 
 
 def main():
-    print('test run')
     while True:
         theBoard = [' '] * 10
 
         playerLetter, botLetter = printWelcome()
 
+        turn = whoGoesFirst()
+        print('\n' + turn + ' goes first.')
         gameIsPlaying = True
 
         while gameIsPlaying:
             # code for playing
+            if turn == 'Player':
+                drawBoard(theBoard)
+                move = getPlayerMove(theBoard)
+                makeMove(theBoard, playerLetter, move)
 
-            print('Do you want to play again? (yes/no)')
-            if not (input().lower().startswith('y') or input().lower().startswith('Y')):
+            else:
+                move = getBotMove(theBoard)
+                makeMove(theBoard, botLetter, move)
+
+
+            if not input('Do you want to play again? (yes/no) : ').lower().startswith('y'):
                 break
 
 if __name__ == '__main__':
