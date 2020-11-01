@@ -208,8 +208,50 @@ def getPlayerMove(board):
         move = input('What is your next step? (1-9) : ')
     return int(move)
 
-def getBotMove(board):
-    pass
+
+def chooseRandomMoveFromList(board, moveList):
+    """
+    docstring
+    """
+    possibleMoves = []
+    for i in moveList:
+        if isSpaceFree(board, i):
+            possibleMoves.append(i)
+
+    if len(possibleMoves) != 0:
+        return random.choice(possibleMoves)
+    else:
+        return None
+
+def getBoardCopy(board):
+    boardCopy = []
+    for i in board:
+        boardCopy.append(i)
+    return boardCopy
+
+def getBotMove(board, botLetter):
+    if botLetter == 'X':
+        playerLetter = 'O'
+    else:
+        playerLetter = 'X'
+
+    for i in range(1, 10):
+        boardCopy = getBoardCopy(board)
+        if isSpaceFree(boardCopy, i):
+            makeMove(boardCopy, playerLetter, i)
+            if isWinner(boardCopy, playerLetter):
+                return i
+    
+    if isSpaceFree(board, 5):
+        return 5
+    
+    move = chooseRandomMoveFromList(board, [1, 3, 7, 9])
+    if move != None:
+        return move
+    
+    return chooseRandomMoveFromList(board, [2, 4, 6, 8])
+
+
 
 
 def main():
@@ -242,7 +284,7 @@ def main():
                         turn = 'Bot'
 
             else:
-                move = getBotMove(theBoard)
+                move = getBotMove(theBoard, botLetter)
                 makeMove(theBoard, botLetter, move)
 
                 if isWinner(theBoard, botLetter):
@@ -258,8 +300,8 @@ def main():
                         turn = 'Player'
 
 
-            if not input('Do you want to play again? (yes/no) : ').lower().startswith('y'):
-                break
+        if not input('Do you want to play again? (yes/no) : ').lower().startswith('y'):
+            break
 
 if __name__ == '__main__':
     main()
