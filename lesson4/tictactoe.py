@@ -194,6 +194,14 @@ def isSpaceFree(board, move):
     #print('Cell is not free')
     return board[move] == ' ' # ' ' == ' ' -> True
 
+
+def isBoardFull(board):
+    for index in range(1, 10): # index = 1, 2, 3, ...
+        if isSpaceFree(board, index):
+            return False
+    return True
+
+
 def getPlayerMove(board):
     move = ' '
     while move not in '1 2 3 4 5 6 7 8 9'.split() or not isSpaceFree(board, int(move)):
@@ -221,9 +229,33 @@ def main():
                 move = getPlayerMove(theBoard)
                 makeMove(theBoard, playerLetter, move)
 
+                if isWinner(theBoard, playerLetter):
+                    drawBoard(theBoard)
+                    print('Well, you win!')
+                    gameIsPlaying = False
+                else:
+                    if isBoardFull(theBoard):
+                        drawBoard(theBoard)
+                        print('white flag')
+                        break
+                    else:
+                        turn = 'Bot'
+
             else:
                 move = getBotMove(theBoard)
                 makeMove(theBoard, botLetter, move)
+
+                if isWinner(theBoard, botLetter):
+                    drawBoard(theBoard)
+                    print('Bot win!')
+                    gameIsPlaying = False
+                else:
+                    if isBoardFull(theBoard):
+                        drawBoard(theBoard)
+                        print('white flag')
+                        break
+                    else:
+                        turn = 'Player'
 
 
             if not input('Do you want to play again? (yes/no) : ').lower().startswith('y'):
