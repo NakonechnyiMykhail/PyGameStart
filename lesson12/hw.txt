@@ -5,4 +5,19 @@
           
    ------
 
-   
+up()
+forward(x)
+down()
+forward(2x)
+up()
+forward(x)
+left(90)
+
+
+---     ---
+|         | 
+|         | 
+          
+|         |
+|         | 
+---     ---
