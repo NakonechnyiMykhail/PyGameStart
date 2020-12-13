@@ -14,7 +14,7 @@ def drawStar(n, l):
         turtle.left(2 * 360 / n)
     turtle.end_fill()
 
-#drawStar(32, 100)
+drawStar(32, 100)
 
 # for x in range(9):
 #     t.forward(100)
@@ -24,9 +24,9 @@ def drawStar(n, l):
 #     t.forward(100)
 #     t.right(144)
 
-for x in range(100):
-    t.forward(100)
-    t.left(146) # 95 / 105 / 80 / 70 / (60)/ 125 / 
+# for x in range(100):
+#     t.forward(100)
+#     t.left(115) # 95 / 105 / 80 / 70 / (60) 63/ (120) 125 / (144) 146
 
-turtle.exitonclick()
-#turtle.mainloop()
+#turtle.exitonclick()
+turtle.mainloop()
