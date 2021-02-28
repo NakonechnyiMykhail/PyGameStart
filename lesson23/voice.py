@@ -7,13 +7,13 @@ voices = engine.getProperty('voices')       #getting details of current voice
 engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
 volume = engine.getProperty('volume')   #getting to know current volume level (min=0 and max=1)
 engine.setProperty('volume', 1.0)           # setting up volume level  between 0 and 1
-engine.say("this is my text for greeting you") # .say(text)
+engine.say("hello world. This is my text for greeting you") # .say(text)
 engine.runAndWait()
 engine.stop()
 
 """Saving Voice to a file"""
 # On linux make sure that 'espeak' and 'ffmpeg' are installed
-engine.save_to_file('Hello World', 'test.mp3')
+engine.save_to_file('Hello World', 'test.wav')
 engine.runAndWait()
 
 
