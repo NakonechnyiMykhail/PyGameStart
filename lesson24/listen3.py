@@ -15,12 +15,19 @@ import speech_recognition
 
 # obtain audio from the microphone
 recognizer = speech_recognition.Recognizer()
-with speech_recognition.Microphone() as source:
+mic = speech_recognition.Microphone()  # device_index=15
+
+# with mic as source:
+#     print("Say something: ")
+#     audio = recognizer.listen(source)
+with mic as source:
     print("Say something: ")
+    recognizer.adjust_for_ambient_noise(source)
     audio = recognizer.listen(source)
 
-
 words = recognizer.recognize_google(audio)
+
+
 
 # respond to speech
 matches = re.search("my name is (.*)", words)

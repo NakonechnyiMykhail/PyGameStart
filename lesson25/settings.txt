@@ -1,0 +1,68 @@
+for Windows 10
+
+1. install visual studio 2019 with (Visual C++ Build Tools)
+https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16
+2. Python3
+https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe
+3. CMake 
+(https://cmake.org/download/ cmake-3.20.0-rc2-windows-x86_64.msi)
+
+### with venv
+pip3 install wheel
+pip3 install dlib 
+pip3 install face_recognition
+
+
+
+Full Description
+https://github.com/ageitgey/face_recognition/issues/175#issue-257710508
+
+
+
+Hi,
+I've successfully installed and tested this tool on my Windows 10 machine and I'm writing a simple procedure to install it. It may be useful for some people to try to use this tool on a Windows machine.
+
+IMPORTANT: Actually this project has made for Linux systems and especially dlib. In my tests, the performance of this tool in Windows 10 was about a quarter in comparison with Ubuntu built with the same specs. But I haven't seen any difference between these two in other subjects.
+
+Read First:
+The new version of dlib doesn't need Boost anymore so you can skip it. Remember that you still need to meet the following requirements.
+Requirments:
+(I've used this tutorial with these tools installed on Windows 10 but the newer versions may work too.)
+
+    Microsoft Visual Studio 2015 (or newer) with C/C++ Compiler installed. (Visual C++ 2015 Build Tools didn't work for me and I got into problems in compiling dlib)
+    Of course Python3 (I used Python3.5 x64 but the other versions may work too)
+    CMake for windows and add it to your system environment variables.
+    (ONLY FOR older versions of dlib) Boost library version 1.63 or newer. Also, you can use precompiled binaries for specific MSVC you have but I don't suggest. (I've included the compiling procedure of Boost in this tutorial)
+
+Installation:
+Easy installation:
+Just install dlib and face_recognition (not always on the newest version):
+pip install dlib and then pip install face_recognition.
+
+Manual installation:
+
+    Download and install scipy and numpy+mkl (must be mkl version) packages from this link (all credits goes to Christoph Gohlke). Remember to grab the correct version based on your current Python version.
+    Download Boost library source code or binary release for your current MSVC from this link.
+    If you downloaded the binary version skip to step 4 else follow these steps to compile and build Boost by yourself:
+    3-1. Extract the Boost source files into C:\local\boost_1_XX_X (X means the current version of Boost you have)
+    3-2. Create a system variable with these parameters:
+    Name: VS140COMNTOOLS
+    Value: C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\ (or any path where you have installed MSVC)
+    3-3. Open Developer Command Prompt for Visual Studio and go to the current directory of Boost extracted and try these commands to compile Boost:
+    bootstrap
+    b2 -a --with-python address-model=64 toolset=msvc runtime-link=static
+    3-4. If you successfully compile Boost, it should create compiled files in stage directory.
+    (If you have already compiled Boost skip this step) If you already download the binary release just extract the contents to C:\local\boost_1_XX_X
+    Grab latest version of dlib from this repo and extract it.
+    Go to dlib directory and open cmd and follow these commands to build dlib: (remember to replace XX with the current version of Boost you have)
+    set BOOST_ROOT=C:\local\boost_X_XX_X
+    set BOOST_LIBRARYDIR=C:\local\boost_X_XX_X\stage\lib
+    python setup.py install --yes USE_AVX_INSTRUCTIONS or python setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA
+    Now you can use import dlib without any problem in your python script.
+    You can also check the current version of dlib with pip show dlib.
+    Now simply install face_recognition with pip install face_recognition.
+    Enjoy!
+
+Finally, I need to say thanks to @ageitgey and @davisking for their awesome work.
+
+
