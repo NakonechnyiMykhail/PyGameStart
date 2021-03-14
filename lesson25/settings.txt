@@ -1,10 +1,10 @@
 for Windows 10
 
-1. install visual studio 2019 with (Visual C++ Build Tools)
+1. install visual studio 2019 with (Visual C++ Build Tools)  (если не установлен)
 https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16
-2. Python3
+2. Python3 (если не установлен)
 https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe
-3. CMake 
+3. CMake  (если не установлен)
 (https://cmake.org/download/ cmake-3.20.0-rc2-windows-x86_64.msi)
 
 ### with venv
