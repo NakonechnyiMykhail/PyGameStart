@@ -1,0 +1,17 @@
+Qt framefork
+
+## windows 
+https://www.qt.io/download
+
+SELECT -> Downloads for open source users
+BUTTON -> Go open source
+
+SEARCH -> Looking for Qt binaries?
+CLICK  -> Download the Qt online Installer
+
+AT NEW PAGE -> SELECT BUTTON -> Download 
+SAVE FILE and RUN
+
+
+## macos for qt version 5.15.2
+brew install qt@5 
