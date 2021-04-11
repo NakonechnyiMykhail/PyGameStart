@@ -15,10 +15,38 @@ from paddle import Paddle
 from text_object import TextObject
 import colors
 
+special_effects = dict(
+    long_paddle = (
+        colors.ORANGE,
+        lambda g: g.paddle.bounds.inflate_ip(c.paddle_width // 2, 0),
+        lambda g: g.paddle.bounds.inflate_ip(-c.paddle_width // 2, 0)
+    ),
+    slow_ball = (
+        colors.AQUAMARINE2,
+        lambda g: g.change_ball_speed(-1),
+        lambda g: g.change_ball_speed(1)
+    ),
+    tripple_points = (
+        colors.DARKSEAGREEN4,
+        lambda g: g.set_points_per_brick(3),
+        lambda g: g.set_points_per_brick(1)
+    ),
+    extra_life = (
+        colors.GOLD1,
+        lambda g: g.add_life(),
+        lambda g: None
+    )
+)
+
+assert os.path.isfile('sound_effects/brick_hit.wav')
 
 class Breakout(Game):
     def __init__(self):
-        pass
+        
+        
+        self.bricks = None
+        self.paddle = None
+        self.ball = None
 
     def add_life(self):
         pass
@@ -53,7 +81,31 @@ class Breakout(Game):
         pass
 
     def create_bricks(self):
-        pass
+        w = c.brick_width
+        h = c.brick_height
+        brick_count = c.screen_width // (w + 1)
+        offset_x = (c.screen_width - brick_count * (w + 1) ) // 2
+
+        bricks = []
+        for row in range(c.row_count):
+            for col in range(brick_count):
+                effect = None
+                brick_color = c.brick_color
+                index = random.randint(0, 10)
+                if index < len(special_effects):
+                    brick_color, start_effect_func, reset_effect_func = list(special_effects.values())[index]
+                    effect = start_effect_func, reset_effect_func
+                
+                brick = Brick(  offset_x + col * (w + 1),   # pos -> x
+                                c.offset_y + row * (h + 1), # pos -> y
+                                w,
+                                h,
+                                brick_color,
+                                effect
+                                )
+                bricks.append(brick)
+                self.objects.append(brick)
+        self.bricks = bricks
 
     def create_paddle(self):
         pass
