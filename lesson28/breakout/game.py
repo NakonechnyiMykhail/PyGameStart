@@ -21,13 +21,28 @@ class Game:
         self.mouse_handlers = []
 
     def update(self):
-        pass
+        for o in self.objects:
+            o.update()
 
     def draw(self):
-        pass
+        for o in self.objects:
+            o.draw(self.surface)
 
     def handle_events(self):
-        pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                for handler in self.keydown_handlers[event.key]:
+                    handler(event.key)
+            elif event.type == pygame.KEYUP:
+                for handler in self.keyup_handlers[event.key]:
+                    handler(event.key)
+            elif event.type in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP, pygame.MOUSEMOTION):
+                for handler in self.mouse_handlers:
+                    handler(event.type, event.pos)
+
 
     def run(self):
         while not self.game_over:
