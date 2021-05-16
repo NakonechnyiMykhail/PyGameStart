@@ -128,8 +128,6 @@ def whiskers():
     pendown()
     goto(40, -10)
 
-
-
 head()
 eyes()
 nose()

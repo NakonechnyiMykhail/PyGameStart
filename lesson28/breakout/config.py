@@ -9,9 +9,9 @@ frame_rate = 90
 
 row_count = 6
 brick_width = 60
-brick_heigth = 20
+brick_height = 20
 brick_color = colors.RED1
-offset_y = brick_heigth + 10
+offset_y = brick_height + 10
 
 ball_speed = 3
 ball_radius = 8
