@@ -1,4 +1,4 @@
-import pygame.rect import Rect
+from pygame.rect import Rect
 
 
 class GameObject:
